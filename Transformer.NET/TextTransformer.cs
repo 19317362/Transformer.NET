@@ -334,7 +334,14 @@ namespace Transformer.NET
                 {
                     token.Transformer = this;
                     this.Tokens.Add(token);
-                    this.TokensById.Add(token.ID, token);
+                    try
+                    {
+                        this.TokensById.Add(token.ID, token);
+                    }
+                    catch (ArgumentException e)
+                    {
+                        throw new TokenNotUniqueException(token);
+                    }
                     this.Groups[tagName].Add(token);
                     token.ParseAnchors();
                 }

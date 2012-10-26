@@ -243,7 +243,15 @@ namespace Transformer.NET
                         if (this.Transformer != null)
                         {
                             //this.Parser.Tokens.Add(token);
-                            this.Transformer.TokensById.Add(token.ID, token);
+                            try
+                            {
+                                this.Transformer.TokensById.Add(token.ID, token);
+                            }
+                            catch (ArgumentException e)
+                            {
+                                throw new TokenNotUniqueException(token);
+                            }
+
                             this.Transformer.Groups["anchor"].Add(token);
                         }
                     }

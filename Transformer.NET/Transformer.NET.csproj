@@ -74,6 +74,7 @@
     <Compile Include="HtmlTransformer.cs" />
     <Compile Include="Net.cs" />
     <Compile Include="TextTransformerConfig.cs" />
+    <Compile Include="TokenNotUniqueException.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="TokenLocation.cs" />
