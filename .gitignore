@@ -3,3 +3,4 @@ obj/
 *.suo
 Transformer.NET/obj/
 Transformer.NET/bin/
+*.vsdoc

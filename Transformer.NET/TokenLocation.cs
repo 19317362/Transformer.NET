@@ -312,9 +312,11 @@ namespace Transformer.NET
             List<string> list = new List<string>();
             MatchCollection matches = this.Regex.Matches(text);
             int count = matches.Count;
+
             for (int i = 0; i < count; i++)
             {
                 Group group;
+
                 if (this.GroupName != null && this.GroupName.Length > 0)
                 {
                     group = matches[i].Groups[this.GroupName];
@@ -331,6 +333,7 @@ namespace Transformer.NET
                 }
 
                 PseudoMatch pseudoMatch = this.IsPseudoMatch(group, token, i, count);
+
                 if (pseudoMatch.Match)
                 {
                     list.Add(group.Value);
@@ -384,10 +387,12 @@ namespace Transformer.NET
             }
 
             sb.Insert(pos+offset, token.Output);
+
             if (this.Position == SelectorPosition.Replace)
             {
                 offset -= group.Length;
             }
+            
             offset += token.Output != null ? token.Output.Length : 0;
 
             return pseudoMatch.CancelSearch;
@@ -396,6 +401,7 @@ namespace Transformer.NET
         public virtual void Place(StringBuilder sb, Token token)
         {
             int offset = 0;
+
             if (this.Pseudo == null || this.Pseudo.Length == 0)
             {
                 this.HandleMatch(this.Regex.Match(sb.ToString()), token, sb, 0, 0, ref offset);
@@ -407,7 +413,7 @@ namespace Transformer.NET
 
                 for (int i = 0; i < count; i++)
                 {
-                    if(this.HandleMatch(matches[i], token, sb, i, count, ref offset))
+                    if (this.HandleMatch(matches[i], token, sb, i, count, ref offset))
                     {
                         break;
                     }

@@ -17,6 +17,8 @@ namespace Transformer.NET.Html
     {
         private static Regex headStartRegex = new Regex(@"<head[.\w\W]*?>", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase);
         private static Regex headEndRegex = new Regex(@"</head>", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase);
+        private static Regex titleStartRegex = new Regex(@"<title[.\w\W]*?>", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase);
+        private static Regex titleEndRegex = new Regex(@"</title>", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase);
         private static Regex bodyStartRegex = new Regex(@"<body[.\w\W]*?>", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase);
         private static Regex bodyEndRegex = new Regex(@"</body>", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase);
 
@@ -54,6 +56,8 @@ namespace Transformer.NET.Html
 
                     this.selectors.Add("headstart", new TokenSelector { Regex = headStartRegex });
                     this.selectors.Add("headend", new TokenSelector { Regex = headEndRegex, Position = SelectorPosition.Before });
+                    this.selectors.Add("titlestart", new TokenSelector { Regex = titleStartRegex });
+                    this.selectors.Add("titleend", new TokenSelector { Regex = titleEndRegex, Position = SelectorPosition.Before });
                     this.selectors.Add("bodystart", new TokenSelector { Regex = bodyStartRegex });
                     this.selectors.Add("bodyend", new TokenSelector { Regex = bodyEndRegex, Position = SelectorPosition.Before });
                 }
@@ -76,6 +80,7 @@ namespace Transformer.NET.Html
                     this.defaultTemplates.Add("cdata", new DefaultTemplateTag("cdata", "<script type=\"text/javascript\">\n\t//<![CDATA[\n\t\t{0}\n\t//]]>\n\t</script>"));
                     this.defaultTemplates.Add("css", new DefaultTemplateTag("css", "<link rel=\"stylesheet\" type=\"text/css\" href=\"{0}\" />"));
                     this.defaultTemplates.Add("style", new DefaultTemplateTag("style", "<style type=\"text/css\">\n{0}\t</style>"));
+                    this.defaultTemplates.Add("title", new DefaultTemplateTag("title", "<title>{0}</title>"));
                 }
 
                 return this.defaultTemplates;
