@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 using System.Security;
 
 [assembly: AssemblyCompany("Ext.NET, Inc.")]
-[assembly: AssemblyCopyright("Copyright © 2006-2012 Ext.NET, Inc.")]
+[assembly: AssemblyCopyright("Copyright © 2007-2012 Ext.NET, Inc.")]
 
-[assembly: AssemblyVersion("2.1.0")]
+[assembly: AssemblyVersion("2.1.1.*")]
 [assembly: AssemblyTitle("Transformer.NET")]
 [assembly: AssemblyProduct("Transformer.NET")]
 [assembly: AssemblyDescription("A .NET template parsing and transformation library. ")]
